@@ -17,7 +17,6 @@ class WorldTime {
     var value = Uri.parse("http://worldtimeapi.org/api/timezone/$url");
     Response response = await get(value);
     Map data = jsonDecode(response.body);
-    print('DATA - $data');
     //get the properties
 
     String datetime = data['datetime'];
@@ -30,9 +29,9 @@ class WorldTime {
         minutes: int.parse(offsetMinutes)),
     );
     print("HOUR - ${now.hour}");
+
     // set the time property
     isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
-    print("DAYTIME - $isDayTime");
     time = DateFormat.jm().format(now);
   }
   catch(e){

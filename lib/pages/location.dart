@@ -28,7 +28,7 @@ class _LocationState extends State<Location> {
       'location': instance.location,
       'time': instance.time,
       'flag': instance.flag,
-      'isDaytime': instance.isDayTime,
+      'isDayTime': instance.isDayTime,
     });
   }
 

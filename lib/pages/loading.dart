@@ -14,11 +14,12 @@ class _LoadingState extends State<Loading> {
   void setupWorldTime() async {
     WorldTime instance = WorldTime(location: 'Berlin', flag: 'berlin.png', url: 'Europe/Berlin');
     await instance.getTime();
+    print("Instance before passing arguements - Daytime ? - ${instance.isDayTime}");
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': instance.location,
       'time':instance.time,
       'flag':instance.flag,
-      'isDaytime': instance.isDayTime
+      'isDayTime': instance.isDayTime
     });
     print("IS DAYTIME - ${instance.isDayTime}");
   }
@@ -37,7 +38,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Center(
-          child: SpinKitFadingCircle(
+          child: SpinKitSpinningCircle(
             color: Colors.white,
             size: 50.0,
           )

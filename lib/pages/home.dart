@@ -19,28 +19,23 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    data = data.isNotEmpty ? data : ModalRoute.of(context)?.settings.arguments as Map;
-    print("IS-- DAYTIME - ${data['isDayTime']}");
-    // // set background image
-    // String bgImage = data['isDayTime'] ? 'day.png' : 'night.jpg';
-    // print("bgImage - $bgImage");
-    //
-    // Color bgColor;
-    // if(data['isDayTime']){
-    //   bgColor = Colors.blue;
-    // }
-    // else{
-    //   bgColor = Colors.indigo;
-    // }
-    // print("bgColor - $bgColor");
+    data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
+    print("Instance after passing arguements - DAYTIME ?  - ${data['isDayTime']}");
+    print("Instance after passing arguements - Time ?  - ${data['time']}");
+    // set background image
+    String bgImage = data['isDayTime'] ? 'day.jpg' : 'night.jpg';
+    print("bgImage - $bgImage");
+
+    Color bgColor = data['isDayTime'] ? Colors.blue : Colors.indigo;
+    print("bgColor - $bgColor");
 
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: bgColor,
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image : AssetImage('assets/day.png'),
+              image : AssetImage('assets/$bgImage'),
               fit: BoxFit.cover,
             )
           ),
@@ -56,7 +51,7 @@ class _HomeState extends State<Home> {
                           data = {
                             'time': result['time'],
                             'location': result['location'],
-                            'isDaytime': result['isDaytime'],
+                            'isDayTime': result['isDayTime'],
                             'flag': result['flag']
                           };
                         });
